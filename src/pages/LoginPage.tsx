@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PurpleButton } from "../components/PurpleButton";
+import  PurpleButton  from "../components/PurpleButton";
 
 const Container = styled.div`
     display: flex;

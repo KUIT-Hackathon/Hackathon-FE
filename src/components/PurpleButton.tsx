@@ -14,3 +14,5 @@ export const PurpleButton = styled.button`
     font-weight: 700;
     border: none;
 `;
+
+export default PurpleButton;
