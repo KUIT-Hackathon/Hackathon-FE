@@ -93,7 +93,7 @@ const SignBox = styled.div`
 
 
 const SignButton = styled.button`
-    background-color: #fff;
+    background-color: rgb(0,0,0,0);
     border: none;
     color: #787878;
     font-family: 'Pretendard';
