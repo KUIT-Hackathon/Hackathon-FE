@@ -10,6 +10,7 @@ const Container = styled.div`
     height: 812px;
     margin:0;
     padding: 0;
+    background-color: #fafafa;
 `;
 
 const MainText = styled.div`
