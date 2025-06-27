@@ -21,7 +21,6 @@ const MainText = styled.div`
     margin-bottom: 51px;
     gap: 24px;
 
-
     p{
         color:#5e5e5e;
         font-family : 'Pretendard';
@@ -65,10 +64,12 @@ const LoginBox = styled.div`
     border-radius: 12px;
     border: 1px solid #c4c4c4;
     font-family: 'Pretendard';
-    color: #bebebe;
     font-size: 18px;
     font-weight: 500;
     text-align: left;
+    &::placeholder {
+        color: #bebebe;
+    }
   }
 `;
 
