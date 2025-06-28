@@ -21,8 +21,6 @@ const usePaperApi = () => {
         },
       })
       .then((response) => {
-        console.log(parseInt(localStorage.getItem('userId') || '0', 10));
-
         return response.data.data;
       })
       .catch((error) => {

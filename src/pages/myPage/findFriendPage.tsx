@@ -3,7 +3,8 @@ import Header from '../../components/Header';
 import NameBoxButton from '../../components/myPage/NameBoxButton';
 import BottomBar from '../../components/BottomBar';
 import Search from '../../assets/icon/mypage/search.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import useUserApi from '../../hooks/useUserApi';
 
 const Container = styled.div`
   width: 375px;
@@ -58,18 +59,16 @@ const InputBox = styled.form`
 
 const FindFriendPage = () => {
   const [inputValue, setInputValue] = useState('');
-  const [keyword, setKeyword] = useState('');
-
-  const friends = [
-    { name: '김도현', id: 'kdh2732' },
-    { name: '백상희', id: 'psh1234' },
-  ];
-
-  const filteredFriends = friends.filter((friend) => friend.id.toLowerCase().includes(keyword.toLowerCase()) || friend.name.includes(keyword));
+  const { searchUser } = useUserApi();
+  const [friends, setFriends] = useState<any[]>([]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    setKeyword(inputValue.trim());
+    const query = inputValue.trim();
+    searchUser({ query }).then((result) => {
+      setFriends(Array.isArray(result) ? result : []);
+      console.log(result);
+    });
   };
 
   return (
@@ -82,9 +81,8 @@ const FindFriendPage = () => {
         </button>
       </InputBox>
       <NameContainer>
-        {filteredFriends.map((friend) => (
-          <NameBoxButton key={friend.id} name={friend.name} ID={friend.id}></NameBoxButton>
-        ))}
+        {friends.length > 0 &&
+          friends.map((friend) => <NameBoxButton key={friend.id} id={friend.id} name={friend.name} loginId={friend.loginId}></NameBoxButton>)}
       </NameContainer>
       <BottomBar />
     </Container>

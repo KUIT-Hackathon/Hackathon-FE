@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import letterIcon from '../../assets/icon/alarm/letterIcon.svg';
 
 const AlarmContainer = styled.div`
   display: flex;
@@ -22,7 +21,7 @@ const AlarmContainer = styled.div`
   }
   p {
     display: flex;
-    width: 250px;
+    width: 100%;
     align-items: center;
     justify-content: left;
     color: #454545;
@@ -32,11 +31,11 @@ const AlarmContainer = styled.div`
   }
 `;
 
-const NotiPaper = () => {
+const NotiPaper = ({ icon, content }) => {
   return (
     <AlarmContainer>
-      <img src={letterIcon} alt="팔로우 알림" />
-      <p>상희님의 롤링페이퍼가 생겼어요!</p>
+      <img src={icon} alt="팔로우 알림" />
+      <p>{content}</p>
     </AlarmContainer>
   );
 };
