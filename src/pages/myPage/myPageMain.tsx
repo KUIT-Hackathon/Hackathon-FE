@@ -3,8 +3,8 @@ import Header from '../../components/Header';
 import PaperTitle from '../../components/PaperTitle';
 import BottomBar from '../../components/BottomBar';
 import { useNavigate } from 'react-router-dom';
-import  useUserApi  from '../../hooks/useUserApi'
-import {useState, useEffect} from 'react';
+import useUserApi from '../../hooks/useUserApi';
+import { useState, useEffect } from 'react';
 import usePaperApi from '../../hooks/usePaperApi';
 
 const Container = styled.div`
@@ -29,6 +29,7 @@ const MyCard = styled.div`
   margin-top: 12px;
   margin-bottom: 29px;
   background-color: #fff;
+  border: 2px solid #c2a8ff;
   h1 {
     font-size: 20px;
     font-weight: 700;
@@ -89,17 +90,17 @@ const PaperContainer = styled.div`
 const MyPageMain = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({
-    name:'',
-    paperCount:0,
-    followingCount:0,
-    followerCount:0,
+    name: '',
+    paperCount: 0,
+    followingCount: 0,
+    followerCount: 0,
   });
   const { myPage } = useUserApi();
-  useEffect(()=>{
-    myPage().then((result)=>{
+  useEffect(() => {
+    myPage().then((result) => {
       setData(result.data);
-    })
-  },[]);
+    });
+  }, []);
 
   const { getMyPaper } = usePaperApi();
   const [papers, setPaper] = useState([]);
@@ -107,14 +108,12 @@ const MyPageMain = () => {
     getMyPaper().then((d) => setPaper(d.paperEntityList));
   }, []);
 
-  
   return (
     <Container>
       <Header title="마이페이지" />
       <MyCard>
         <h1>{data.name} 님</h1>
         <Stat>
-          
           <Spec disabled={true}>
             <h3>나의 페이퍼</h3>
             <Count>{data.paperCount}</Count>
@@ -133,7 +132,7 @@ const MyPageMain = () => {
       <MyPaper>
         <PaperT>나의 페이퍼</PaperT>
         <PaperContainer>
-        {Array.isArray(papers) && papers.map((paper) => <PaperTitle key={paper.uuid} icon={paper.category} title={paper.title} date={paper.publishDate} />)}
+          {Array.isArray(papers) && papers.map((paper) => <PaperTitle key={paper.uuid} icon={paper.category} title={paper.title} date={paper.publishDate} />)}
         </PaperContainer>
       </MyPaper>
       <BottomBar />

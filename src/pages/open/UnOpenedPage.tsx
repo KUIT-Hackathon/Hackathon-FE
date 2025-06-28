@@ -116,7 +116,7 @@ const UnOpenedPage = () => {
       <Container>
         <TextContainer>
           <MainText>
-            <h1>제목</h1>
+            <h1>KUmmIT 해커톤 발표 응원하기</h1>
             <h2>2025년 10월 29일에 공개돼요!</h2>
           </MainText>
           <p>현재 24개의 메세지가 쌓여있어요</p>
