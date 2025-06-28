@@ -1,10 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import arrowBack from '../assets/icon/header/arrowBack.svg';
-
-interface HeaderProps {
-  title: string;
-}
+import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
   height: 51px;
@@ -28,9 +25,11 @@ const Container = styled.div`
   min-width: 375px;
 `;
 
-const ArrowIcon = styled.img`
+const ArrowIcon = styled.button`
   position: absolute;
   left: 20px;
+  background: none;
+  cursor: pointer;
 `;
 
 const Title = styled.span`
@@ -43,11 +42,23 @@ const Title = styled.span`
   line-height: 150%;
 `;
 
-const Header: React.FC<HeaderProps> = ({ title }) => {
+const Header = ({ title }) => {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <Wrapper>
       <Container>
-        <ArrowIcon src={arrowBack} alt="뒤로가기" />
+        <ArrowIcon onClick={handleBack} aria-label="뒤로가기">
+          <img src={arrowBack} alt="뒤로가기" />
+        </ArrowIcon>
         <Title>{title}</Title>
       </Container>
       <EmptySpace></EmptySpace>
