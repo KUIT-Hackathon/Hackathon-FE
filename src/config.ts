@@ -8,6 +8,7 @@ export const ENDPOINTS = {
   USER: {
     SEARCH: '/search',
     PROFILE: '/profile',
+    FOLLOWER: '/follower',
   },
   PAPER: {
     MY: '/my',

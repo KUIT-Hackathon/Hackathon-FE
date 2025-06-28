@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import NotiPaper from '../../components/alarm/NotiPaper';
 import NotiFriend from '../../components/alarm/NotiFriend';
 import Header from '../../components/Header';
+import BottomBar from '../../components/BottomBar';
 
 const Container = styled.div`
   width: 375px;
@@ -43,7 +44,7 @@ const AlarmPage = () => {
       <DateWrapper>
         <h3>2025.06.23.</h3>
         <MsgContainer>
-          <NotiPaper  />
+          <NotiPaper />
           <NotiFriend friend="태성" />
         </MsgContainer>
       </DateWrapper>
@@ -57,10 +58,11 @@ const AlarmPage = () => {
       <DateWrapper>
         <h3>2025.06.21.</h3>
         <MsgContainer>
-          <NotiPaper  />
+          <NotiPaper />
           <NotiFriend friend="태성" />
         </MsgContainer>
       </DateWrapper>
+      <BottomBar />
     </Container>
   );
 };

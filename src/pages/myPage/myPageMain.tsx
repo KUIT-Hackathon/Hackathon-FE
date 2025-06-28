@@ -3,6 +3,8 @@ import Header from '../../components/Header';
 import PaperTitle from '../../components/PaperTitle';
 import BottomBar from '../../components/BottomBar';
 import { useNavigate } from 'react-router-dom';
+import  useUserApi  from '../../hooks/useUserApi'
+import {useState, useEffect} from 'react';
 
 const Container = styled.div`
   width: 375px;
@@ -83,26 +85,33 @@ const PaperContainer = styled.div`
   margin-top: 8px;
 `;
 
-const MyPageMain = ({ name, mypaper, following, follower }) => {
+const MyPageMain = () => {
   const navigate = useNavigate();
-
+  const [data, setData] = useState([]);
+  const { myPage } = useUserApi();
+  useEffect(()=>{
+    myPage().then((result)=>{
+      setData(result);
+    })
+  },[]);
+  
   return (
     <Container>
       <Header title="마이페이지" />
       <MyCard>
-        <h1>{name} 님</h1>
+        <h1>{data[0]} 님</h1>
         <Stat>
           <Spec disabled={true}>
             <h3>나의 페이퍼</h3>
-            <Count>{mypaper}</Count>
+            <Count>{data[1]}</Count>
           </Spec>
           <Spec type="button" onClick={() => navigate('/mypage/following')} disabled={false}>
             <h3>팔로잉</h3>
-            <Count>{following}</Count>
+            <Count>{data[2]}</Count>
           </Spec>
           <Spec type="button" onClick={() => navigate('/mypage/follower')} disabled={false}>
             <h3>팔로워</h3>
-            <Count>{follower}</Count>
+            <Count>{data[3]}</Count>
           </Spec>
         </Stat>
       </MyCard>

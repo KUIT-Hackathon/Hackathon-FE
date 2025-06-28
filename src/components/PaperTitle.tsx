@@ -10,7 +10,8 @@ const ICON_MAP = {
   Running,
 };
 
-const Container = styled.div`
+const Container = styled.button`
+  all: unset;
   width: 330px;
   height: 38px;
   display: flex;
@@ -20,6 +21,7 @@ const Container = styled.div`
   padding: 9px 12px;
   background-color: #fff;
   border-radius: 8px;
+  cursor: pointer;
 `;
 
 const EventContainer = styled.div`
@@ -51,7 +53,7 @@ const PaperTitle = ({ icon, title, date }) => {
   const iconSrc = ICON_MAP[icon] || ICON_MAP.Birthday;
 
   return (
-    <Container>
+    <Container onClick={() => console.log('click!')}>
       <EventContainer>
         <img src={iconSrc} alt={`${icon} 아이콘`} />
         <TextContainer>

@@ -24,7 +24,7 @@ const Writer = styled.div`
   color: #5e5e5e;
   font-size: 16px;
   font-weight: 500;
-  margin:0;
+  margin: 0;
   background-color: #fff;
   border-radius: 16px;
   &::placeholder {
@@ -42,14 +42,10 @@ const Text = styled.div`
   color: #5e5e5e;
   font-size: 16px;
   font-weight: 500;
-  background-color:#ffff;
-
-  }
+  background-color: #ffff;
 `;
 
 const MessageDetail = () => {
-
-    
   return (
     <Wrapper>
       <Header title="페이퍼 확인" />

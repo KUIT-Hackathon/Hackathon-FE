@@ -4,6 +4,7 @@ import grayGeneral from '../assets/icon/bottomBar/grayGeneral.svg';
 import colorAlarm from '../assets/icon/bottomBar/colorNotiOn.svg';
 import grayMy from '../assets/icon/bottomBar/grayMy.svg';
 import plus from '../assets/icon/bottomBar/plus.svg';
+import {useNavigate} from 'react-router-dom';
 
 const Container = styled.div`
   position: fixed;
@@ -18,12 +19,13 @@ const Container = styled.div`
   gap: 20px;
 `;
 
-const Menu = styled.div`
+const Menu = styled.button`
   display: flex;
   width: 55px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: none;
   gap: 4px;
   cursor: pointer;
 
@@ -48,24 +50,27 @@ const Plus = styled.div`
 `;
 
 const BottomBar = () => {
+  const navigate = useNavigate();
+
+
   return (
     <Container>
-      <Menu>
+      <Menu onClick={()=>navigate('/')}>
         <img src={grayHome} alt="홈" />
         <h1>홈</h1>
       </Menu>
-      <Menu>
+      <Menu onClick={()=>navigate('/public/main')}>
         <img src={grayGeneral} alt="공개 페이퍼" />
         <h1>공개 페이지</h1>
       </Menu>
       <Plus>
         <img src={plus} alt="페이지 추가하기" />
       </Plus>
-      <Menu>
+      <Menu onClick={()=>navigate('/alarm')}>
         <img src={colorAlarm} alt="소식함" />
         <h1>소식함</h1>
       </Menu>
-      <Menu>
+      <Menu onClick={()=>navigate('/mypage')}>
         <img src={grayMy} alt="마이페이지" />
         <h1>마이페이지</h1>
       </Menu>
