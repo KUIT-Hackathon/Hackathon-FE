@@ -51,6 +51,9 @@ const CreatePublicPaper = () => {
   setIsModalOpen(false);
   navigate('/public/main'); 
   };
+
+  
+
   return (
     <Wrapper>
       <Header title="롤링페이퍼 만들기" />
