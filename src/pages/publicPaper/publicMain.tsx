@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Header from '../../components/Header';
-import Logo from '../../assets/icon/paper/birthday.svg';
+import ToYou from '../../assets/icon/logo/defaultLogo.svg';
 import PaperTitle from '../../components/PaperTitle';
 import BottomBar from '../../components/BottomBar';
 
@@ -12,9 +12,16 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
   background-color: #f8f8f8;
-  img {
-    //img 수정필요!!!!!
-  }
+`;
+
+const LogoImg = styled.div`
+  width: 353px;
+  height: 58px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 12px;
 `;
 
 const PaperContainer = styled.div`
@@ -34,8 +41,10 @@ const PublicMain = () => {
 
   return (
     <Container>
-      <Header title="공개 페이퍼"></Header>;
-      <img src={Logo} alt="To-You" />;
+      <Header title="공개 페이퍼"></Header>
+      <LogoImg>
+        <img src={ToYou} alt="To-You" />
+      </LogoImg>
       <PaperContainer>
         {paper.map((paper) => (
           <PaperTitle key={paper.uuid} icon={paper.icon} title={paper.title} date={paper.date} />
