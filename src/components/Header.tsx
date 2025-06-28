@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import arrowBack from "../assets/icon/arrowBack.svg";
-import whitePlus from "../assets/icon/whitePlus.svg";
+import arrowBack from "../assets/icon/header/arrowBack.svg";
+import whitePlus from "../assets/icon/header/whitePlus.svg";
 
 
 interface HeaderProps {
