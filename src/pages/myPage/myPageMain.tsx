@@ -39,7 +39,7 @@ const Stat = styled.div`
   gap: 16px;
 `;
 
-const Spec = styled.div`
+const Spec = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;

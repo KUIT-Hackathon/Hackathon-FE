@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/Modal';
 import styled from 'styled-components';
 import PurpleButton from '../../components/PurpleButton';
@@ -100,6 +101,20 @@ const IDBox = styled.div`
 
 const SignPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [name, setName] = useState('');
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    console.log('signup 시도 : ', { name, id, password });
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    navigate('/login');
+  };
 
   return (
     <Container>
@@ -107,31 +122,31 @@ const SignPage = () => {
       <InputContainer>
         <InputBox>
           <h2>이름을 입력해주세요.</h2>
-          <input type="text" placeholder="이름을 입력하세요." />
+          <input type="text" placeholder="이름을 입력하세요." value={name} onChange={(e) => setName(e.target.value)} />
         </InputBox>
         <InputBox>
           <IDBox>
             <h2>아이디를 입력해주세요.</h2>
             <h3>아이디는 로그인 시 사용됩니다.</h3>
           </IDBox>
-          <input type="text" placeholder="아이디를 입력하세요." />
+          <input type="text" placeholder="아이디를 입력하세요." value={id} onChange={(e) => setId(e.target.value)} />
         </InputBox>
         <PWBox>
           <InputBox>
             <h2>비밀번호를 입력해주세요.</h2>
-            <input type="password" placeholder="비밀번호를 입력하세요." />
+            <input type="password" placeholder="비밀번호를 입력하세요." value={password} onChange={(e) => setPassword(e.target.value)} />
           </InputBox>
           <h3>8~20자 영문, 숫자의 조합으로 입력해 주세요.</h3>
         </PWBox>
       </InputContainer>
-      <PurpleButton onClick={() => setIsModalOpen(true)}>회원가입하기</PurpleButton>
+      <PurpleButton onClick={handleSubmit}>회원가입하기</PurpleButton>
       <Modal
         isOpen={isModalOpen}
         icon={<img src={checkIcon} alt="체크 아이콘" />}
         title="회원가입 완료"
         description={`로그인 후 ToYou를\n이용하세요!`}
         confirmText="확인"
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleModalClose}
       />
     </Container>
   );

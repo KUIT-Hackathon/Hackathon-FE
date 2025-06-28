@@ -19,6 +19,7 @@ export const ButtonContainer = styled.button`
   font-weight: 700;
   position: fixed;
   bottom: 31px;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
 
 const PurpleButton = ({ children, onClick, disabled }: PurpleButtonProps) => {
