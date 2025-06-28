@@ -6,27 +6,18 @@ const useApi = () => {
     baseURL: BASE_URL,
   });
   const userApi = axios.create({
-    baseURL: BASE_URL + 'user',
+    baseURL: BASE_URL + '/user',
   });
   const paperApi = axios.create({
-    baseURL: BASE_URL + 'paper',
+    baseURL: BASE_URL + '/paper',
   });
-  api.interceptors.request.use((config) => {
-    const userId = localStorage.getItem('userId');
-    if (userId) config.headers['X-USER-ID'] = userId;
-    return config;
+  const withUserId = (headers = {}) => ({
+    headers: {
+      ...headers,
+      'X-USER-ID': localStorage.getItem('userId') || '',
+    },
   });
-  userApi.interceptors.request.use((config) => {
-    const userId = localStorage.getItem('userId');
-    if (userId) config.headers['X-USER-ID'] = userId;
-    return config;
-  });
-  paperApi.interceptors.request.use((config) => {
-    const userId = localStorage.getItem('userId');
-    if (userId) config.headers['X-USER-ID'] = userId;
-    return config;
-  });
-  return { api, userApi, paperApi };
+  return { api, userApi, paperApi, withUserId };
 };
 
 export default useApi;

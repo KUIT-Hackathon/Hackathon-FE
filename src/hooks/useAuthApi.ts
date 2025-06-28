@@ -3,7 +3,7 @@ import { ENDPOINTS } from '../config';
 import useApi from './useApi';
 
 const useAuthApi = () => {
-  const { api } = useApi();
+  const { api, withUserId } = useApi();
 
   const signup = (data) => {
     return api
@@ -22,7 +22,7 @@ const useAuthApi = () => {
     return api
       .post(ENDPOINTS.AUTH.LOGIN, data)
       .then((response) => {
-        const userId = response.data.userId;
+        const userId = response.data.data.userId;
         localStorage.setItem('userId', userId);
       })
       .catch((error) => console.log(error));
