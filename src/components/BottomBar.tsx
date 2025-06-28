@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import grayHome from "../assets/icon/grayHome.svg";
-import grayGeneral from "../assets/icon/grayGeneral.svg";
-import colorAlarm from "../assets/icon/colorNotiOn.svg";
-import grayMy from "../assets/icon/grayMy.svg";
-import plus from "../assets/icon/plus.svg";
+import grayHome from "../assets/icon/bottomBar/grayHome.svg";
+import grayGeneral from "../assets/icon/bottomBar/grayGeneral.svg";
+import colorAlarm from "../assets/icon/bottomBar/colorNotiOn.svg";
+import grayMy from "../assets/icon/bottomBar/grayMy.svg";
+import plus from "../assets/icon/bottomBar/plus.svg";
 
 const Container = styled.div`
     position: fixed;
