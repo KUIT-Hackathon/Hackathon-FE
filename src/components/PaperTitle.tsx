@@ -17,7 +17,6 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 150px;
   padding: 9px 12px;
   background-color: #fff;
   border-radius: 8px;
@@ -36,6 +35,7 @@ const TextContainer = styled.div`
   flex-direction: column;
   gap: 3px;
   h1 {
+    width: 250px;
     color: #2b2b2b;
     font-size: 18px;
     font-weight: 500;
