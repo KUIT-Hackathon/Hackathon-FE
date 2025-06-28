@@ -20,12 +20,8 @@ const modalStyle: ReactModal.Styles = {
     overlay:{
         width:"375px",
         height:"812px",
-
-
-
         position:"fixed",
         backgroundColor: "rgba(0,0,0,0.6)",
-        
         margin:"auto",
         display: "flex",
         alignItems: "center",
@@ -37,7 +33,6 @@ const modalStyle: ReactModal.Styles = {
         height: "288px",
         borderRadius: "20px",
         border:"none",
-
         display:"flex",
         flexDirection: "column",
         alignItems: "center",
@@ -47,7 +42,6 @@ const modalStyle: ReactModal.Styles = {
     }
 };
 
-
 const ModalContainer = styled.div`
     width: 288px;
     height: 288px;
@@ -55,9 +49,8 @@ const ModalContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    gap : 15px;
 `;
-
 
 const IconContainer = styled.div`
     width: 74px;
@@ -108,13 +101,12 @@ const ConfirmButton = styled.button`
     padding: 11px 112px;
     border-radius: 12px;
     border: none;
+    line-height:normal;
     background: var(--unnamed, linear-gradient(180deg, #BFA4FF 0%, #A189FF 100%));
     color: #fff;
     font-size: 18px;
     font-weight: 700;
 `;
-
-
 
 const Modal: React.FC<ModalProps> = ({
     isOpen,
