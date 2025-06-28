@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import useUserApi from '../../hooks/useUserApi';
 
 const Container = styled.div`
   width: 277px;
@@ -45,14 +46,16 @@ const NameContainer = styled.div`
   gap: 10px;
 `;
 
-const NameBoxButton = ({ name, ID }) => {
+const NameBoxButton = ({ name, id, loginId }) => {
+  const { follow } = useUserApi();
+  const friendId = id;
   return (
     <Container>
       <NameContainer>
         <Name>{name}</Name>
-        <IDBox>{ID}</IDBox>
+        <IDBox>{loginId}</IDBox>
       </NameContainer>
-      <Button>팔로우</Button>
+      <Button onClick={() => follow({ friendId })}>팔로우</Button>
     </Container>
   );
 };

@@ -21,8 +21,6 @@ const usePaperApi = () => {
         },
       })
       .then((response) => {
-        console.log(parseInt(localStorage.getItem('userId') || '0', 10));
-
         return response.data.data;
       })
       .catch((error) => {
@@ -30,7 +28,23 @@ const usePaperApi = () => {
       });
   };
 
-  return { postMessage, getPublicPaper };
+  const getMyPaper = () => {
+    return paperApi
+      .get(ENDPOINTS.PAPER.MY, {
+        headers: {
+          userId: parseInt(localStorage.getItem('userId') || '0', 10),
+        },
+      })
+      .then((response) => {
+        console.log(parseInt(localStorage.getItem('userId') || '0', 10));
+        return response.data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return { postMessage, getPublicPaper, getMyPaper };
 };
 
 export default usePaperApi;
