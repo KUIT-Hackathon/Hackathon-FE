@@ -55,7 +55,7 @@ const BottomBar = () => {
         <h1>홈</h1>
       </Menu>
       <Menu>
-        <img src={grayGeneral} alt="공개 페이지" />
+        <img src={grayGeneral} alt="공개 페이퍼" />
         <h1>공개 페이지</h1>
       </Menu>
       <Plus>

@@ -11,6 +11,8 @@ import FollowingPage from './pages/myPage/followingPage';
 import FollowerPage from './pages/myPage/followerPage';
 import FindFriendPage from './pages/myPage/findFriendPage';
 import OpenedPage from './pages/open/OpenedPage';
+import PublicMain from './pages/publicPaper/publicMain';
+import WritePublic from './pages/publicPaper/writePublic';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -32,7 +34,7 @@ const Router = () => {
     },
     {
       path: '/paper/open',
-      element: <OpenedPage />
+      element: <OpenedPage />,
     },
     {
       path: '/paper/create/public',
@@ -61,6 +63,14 @@ const Router = () => {
     {
       path: '/mypage/findfriend',
       element: <FindFriendPage />,
+    },
+    {
+      path: '/public/main',
+      element: <PublicMain />,
+    },
+    {
+      path: '/public/write',
+      element: <WritePublic />,
     },
   ]);
   return <RouterProvider router={router} />;
