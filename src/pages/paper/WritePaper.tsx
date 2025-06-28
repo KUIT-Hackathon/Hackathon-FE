@@ -7,6 +7,7 @@ import airplane from '../../assets/icon/modal/airplane.svg';
 import { Wrapper, Container, InfoContainer, InfoTextContainer, InfoTitle, InfoDesc, InputName, InputContent } from './WritePaper.styles';
 import usePaperApi from '../../hooks/usePaperApi';
 import WrittenTitle from '../../components/WrittenTitle';
+import { useNavigate } from 'react-router-dom';
 
 const WritePaper = () => {
   const titleInputRef = createRef<HTMLInputElement | null>();
@@ -14,6 +15,7 @@ const WritePaper = () => {
   const [isValid, isSetValid] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { postMessage } = usePaperApi();
+  const navigate = useNavigate();
   const handleSubmit = () => {
     const title = titleInputRef.current?.value.trim();
     const content = contentInputRef.current?.value.trim();
@@ -32,6 +34,10 @@ const WritePaper = () => {
     const content = contentInputRef.current?.value.trim();
     if (!!title && !!content) isSetValid(true);
   };
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    navigate('/');}
+  
   return (
     <Wrapper>
       <Header title="메시지 작성하기" />
@@ -50,9 +56,9 @@ const WritePaper = () => {
           isOpen={isModalOpen}
           icon={<img src={airplane} alt="체크 아이콘" />}
           title="전송 완료"
-          description={`상희님을 위한 롤링페이퍼가\n 발송되었어요 !`}
+          description={`롤링페이퍼가\n 발송되었어요 !`}
           confirmText="확인"
-          onClose={() => setIsModalOpen(false)}
+          onClose={handleModalClose}
         />
       </Container>
     </Wrapper>

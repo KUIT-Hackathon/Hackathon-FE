@@ -157,6 +157,7 @@ const SignPage = () => {
         description={`로그인 후 ToYou를\n이용하세요!`}
         confirmText="확인"
         onClose={handleModalClose}
+        
       />
     </Container>
   );
