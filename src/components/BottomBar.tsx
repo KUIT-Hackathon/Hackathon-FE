@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+
+
+import publicPlus from '../assets/icon/bottomBar/publicPlus.svg';
+import friendPlus from '../assets/icon/bottomBar/friendPlus.svg';
 
 import grayHome from '../assets/icon/bottomBar/grayHome.svg';
 import colorHome from '../assets/icon/bottomBar/colorHome.svg';
@@ -59,9 +64,37 @@ const Plus = styled.div`
   }
 `;
 
+const PlusMenu = styled.button`
+  display: flex;
+  align-items: center;
+  background: none; 
+  border: none; 
+  cursor: pointer;
+
+  img {
+    width: 80px;
+    height: 010
+px;
+  }
+`;
+
+const PlusMenuContainer = styled.div`
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-30%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
 const BottomBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [isPlusOpen, setIsPlusOpen] = useState(false);
+
+  const handlePlusClick = () => {
+    setIsPlusOpen(prev => !prev);
+  };
 
   return (
     <Container>
@@ -76,13 +109,23 @@ const BottomBar = () => {
       <Menu onClick={() => navigate('/public/main')}>
         <img
           src={location.pathname === '/public/main' ? colorGeneral : grayGeneral}
-          alt="공개 페이지"
+          alt="공개 페이퍼"
         />
-        <h1>공개 페이지</h1>
+        <h1>공개 페이퍼</h1>
       </Menu>
 
       <Plus>
-        <img src={plus} alt="페이지 추가하기" />
+         <img src={plus} alt="페이퍼 추가하기" onClick={handlePlusClick} />
+        {isPlusOpen && (
+          <PlusMenuContainer>
+           <PlusMenu onClick={() => { navigate('/paper/create/public'); }}>
+              <img src={publicPlus} alt="공개" />
+            </PlusMenu>
+            <PlusMenu onClick={() => { navigate('/paper/create/private'); }}>
+              <img src={friendPlus} alt="친구" />
+            </PlusMenu>
+          </PlusMenuContainer>
+        )}
       </Plus>
 
       <Menu onClick={() => navigate('/alarm')}>
