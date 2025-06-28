@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import PurpleButton from '../../components/PurpleButton';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import useAuthApi from '../../hooks/useAuthApi';
 
 const Container = styled.div`
   display: flex;
@@ -102,10 +103,16 @@ const SignButton = styled.button`
 const LoginPage = () => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useAuthApi();
 
   const handleLogin = () => {
     console.log('login 시도 : ', { userId, password });
     //list 검사 코드
+    const loginData = {
+      id: userId,
+      password: password,
+    };
+    login(loginData);
   };
 
   const navigate = useNavigate();

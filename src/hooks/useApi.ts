@@ -4,15 +4,27 @@ import { BASE_URL } from '../config';
 const useApi = () => {
   const api = axios.create({
     baseURL: BASE_URL,
-    withCredentials: true,
   });
   const userApi = axios.create({
     baseURL: BASE_URL + 'user',
-    withCredentials: true,
   });
   const paperApi = axios.create({
     baseURL: BASE_URL + 'paper',
-    withCredentials: true,
+  });
+  api.interceptors.request.use((config) => {
+    const userId = localStorage.getItem('userId');
+    if (userId) config.headers['X-USER-ID'] = userId;
+    return config;
+  });
+  userApi.interceptors.request.use((config) => {
+    const userId = localStorage.getItem('userId');
+    if (userId) config.headers['X-USER-ID'] = userId;
+    return config;
+  });
+  paperApi.interceptors.request.use((config) => {
+    const userId = localStorage.getItem('userId');
+    if (userId) config.headers['X-USER-ID'] = userId;
+    return config;
   });
   return { api, userApi, paperApi };
 };

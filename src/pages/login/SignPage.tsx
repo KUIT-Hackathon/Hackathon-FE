@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PurpleButton from '../../components/PurpleButton';
 import Header from '../../components/Header';
 import checkIcon from '../../assets/icon/modal/check.svg'; // Assuming you have a check icon for the modal
+import useAuthApi from '../../hooks/useAuthApi';
 
 const Container = styled.div`
   display: flex;
@@ -105,10 +106,19 @@ const SignPage = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { signup } = useAuthApi();
 
   const handleSubmit = () => {
     console.log('signup 시도 : ', { name, id, password });
     setIsModalOpen(true);
+    const signupData = {
+      name: name,
+      id: id,
+      password: password,
+    };
+    signup(signupData).then((data) => {
+      console.log(data);
+    });
   };
 
   const handleModalClose = () => {

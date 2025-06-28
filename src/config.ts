@@ -1,6 +1,10 @@
 export const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const ENDPOINTS = {
+  AUTH: {
+    SIGNUP: '/auth/signup',
+    LOGIN: '/auth/login',
+  },
   USER: {
     SEARCH: '/search',
     PROFILE: '/profile',
