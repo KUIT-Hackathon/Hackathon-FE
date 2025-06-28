@@ -7,6 +7,11 @@ import { CATEGORY } from '../../constants/EventCategory';
 import PurpleButton from '../../components/PurpleButton';
 import SelectTarget from '../../components/paper/SelectTarget';
 import CreatePaperSection from '../../components/paper/CreatePaperSection';
+import { useEffect } from 'react';
+import Modal from '../../components/Modal';
+import check from '../../assets/icon/modal/check.svg';
+import { useNavigate } from 'react-router-dom';
+
 import useUserApi from '../../hooks/useUserApi';
 
 const Wrapper = styled.div`
@@ -23,6 +28,8 @@ const Container = styled.div`
 `;
 
 const CreatePrivatePaper = () => {
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [type, setType] = useState<string>(CATEGORY.BIRTHDAY);
   const [isValid, setIsValid] = useState<boolean>(false);
   const [target, setTarget] = useState<string>('me');
@@ -31,16 +38,31 @@ const CreatePrivatePaper = () => {
   const titleInputRef = createRef<HTMLInputElement | null>();
   const dateInputRef = createRef<HTMLInputElement | null>();
   const handleChange = () => {
-    const title = titleInputRef.current?.value.trim();
-    const date = dateInputRef.current?.value.trim();
-    if (!title || !date || userName.length == 0) return;
-    setIsValid(true);
-  };
+  const title = titleInputRef.current?.value.trim();
+  const date = dateInputRef.current?.value.trim();
+  const isAllValid = !!title && !!date && userName.length > 0;
+  setIsValid(isAllValid);
+};
+
+useEffect(() => {
+  handleChange();
+}, [userName]);
+
   const handleSubmit = () => {
-    const title = titleInputRef.current?.value.trim();
-    const date = dateInputRef.current?.value.trim();
-    if (!!title && !!date) console.log();
+  const title = titleInputRef.current?.value.trim();
+  const date = dateInputRef.current?.value.trim();
+
+  if (!!title && !!date) {
+    console.log('롤링페이퍼 생성:', { title, date, type });
+    setIsModalOpen(true);
+  }
+};
+
+  const handleModalClose = () => {
+  setIsModalOpen(false);
+  navigate('/public/main'); 
   };
+
 
   return (
     <Wrapper>
@@ -76,6 +98,14 @@ const CreatePrivatePaper = () => {
         <PurpleButton onClick={() => handleSubmit()} disabled={!isValid}>
           롤링페이퍼 만들기
         </PurpleButton>
+        <Modal
+          isOpen={isModalOpen}
+          icon={<img src={check} alt="체크 아이콘" />}
+          title="생성 완료"
+          description={`롤링페이퍼가\n 발송되었어요 !`}
+          confirmText="확인"
+          onClose={handleModalClose}
+        />
       </Container>
     </Wrapper>
   );
