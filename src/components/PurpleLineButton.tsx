@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface PurpleButtonProps {
+interface PurpleLineButtonProps {
   children: string;
   onClick: () => void;
   disabled?: boolean;
@@ -8,7 +8,8 @@ interface PurpleButtonProps {
 }
 
 export const ButtonContainer = styled.button<{$isFixed: boolean}>`
-  background-color: ${({ disabled }) => (disabled ? '#DEDEDE' : '#bea0db')};
+  border: 1px solid ${({ disabled }) => (disabled ? '#DEDEDE' : '#bea0db')};
+  color: ${({ disabled }) => (disabled ? '#DEDEDE' : '#bea0db')};
   position: ${({$isFixed}) => ($isFixed ? 'fixed' : 'static')};
   bottom: ${({$isFixed}) => ($isFixed && '31px')};
   display: flex;
@@ -17,13 +18,12 @@ export const ButtonContainer = styled.button<{$isFixed: boolean}>`
   width: 335px;
   height: 48px;
   border-radius: 12px;
-  color: #fafafa;
+  color: #8A6BD1;
   font-size: 18px;
   font-weight: 700;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
 
-const PurpleButton = ({ children, onClick, disabled, $isFixed=true }: PurpleButtonProps) => {
+const PurpleLineButton = ({ children, onClick, disabled, $isFixed=true }: PurpleLineButtonProps) => {
   return (
     <ButtonContainer onClick={onClick} disabled={disabled} $isFixed={$isFixed}>
       {children}
@@ -31,4 +31,5 @@ const PurpleButton = ({ children, onClick, disabled, $isFixed=true }: PurpleButt
   );
 };
 
-export default PurpleButton;
+
+export default PurpleLineButton;

@@ -10,6 +10,7 @@ import MyPageMain from './pages/myPage/myPageMain';
 import FollowingPage from './pages/myPage/followingPage';
 import FollowerPage from './pages/myPage/followerPage';
 import FindFriendPage from './pages/myPage/findFriendPage';
+import OpenedPage from './pages/open/OpenedPage';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const Router = () => {
     {
       path: '/login',
       element: <LoginPage />,
+    },
+    {
+      path: '/paper/open',
+      element: <OpenedPage />
     },
     {
       path: '/paper/create/public',
