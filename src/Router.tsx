@@ -61,7 +61,7 @@ const Router = () => {
     },
     {
       path: '/mypage',
-      element: <MyPageMain name={'김도현'} mypaper={'12'} follower={'12'} following={'24'} />,
+      element: <MyPageMain />,
     },
     {
       path: '/mypage/following',

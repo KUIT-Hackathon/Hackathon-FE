@@ -1,4 +1,3 @@
-import { error } from 'console';
 import { ENDPOINTS } from '../config';
 import useApi from './useApi';
 
@@ -27,6 +26,7 @@ const useAuthApi = () => {
       })
       .catch((error) => console.log(error));
   };
+
 
   return { signup, login };
 };

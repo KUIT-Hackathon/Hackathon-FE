@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import Header from '../../components/Header';
 import NameBox from '../../components/myPage/NameBox';
 import BottomBar from '../../components/BottomBar';
+import {useState, useEffect} from 'react';
+import useUserApi from '../../hooks/useUserApi';
+
 
 const Container = styled.div`
   width: 375px;
@@ -22,17 +25,22 @@ const NameContainer = styled.div`
 `;
 
 const FollowerPage = () => {
-  const follower = [
-    { name: '김도현', id: 'kdh2732' },
-    { name: '백상희', id: 'psh1234' },
-  ];
 
+  const [data, setData] = useState([]);
+  const{followerCheck}= useUserApi();
+  useEffect(()=>{
+    followerCheck().then((result)=>{
+      setData(result);
+    })
+  },[]);
+
+  
   return (
     <Container>
       <Header title="팔로워" />
       <NameContainer>
-        {follower.map((follower) => (
-          <NameBox key={follower.id} name={follower.name} ID={follower.id}></NameBox>
+        {data.map((follower) => (
+          <NameBox key={follower.id} name={follower.name} ID={follower.loginid}></NameBox>
         ))}
       </NameContainer>
       <BottomBar />

@@ -103,6 +103,7 @@ const SignButton = styled.button`
 const LoginPage = () => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   const { login } = useAuthApi();
 
   const handleLogin = () => {
@@ -112,10 +113,19 @@ const LoginPage = () => {
       id: userId,
       password: password,
     };
-    login(loginData);
+    login(loginData)
+    .then(()=>{
+      navigate('/');
+    })
+    .catch((error)=>{
+      const status = error?.response?.status;
+      if(status===500){
+        navigate('/');
+      }else{
+        alert('로그인 실패 : 다시 입력하세요.');}
+    });
   };
 
-  const navigate = useNavigate();
   return (
     <Container>
       <TextContainer>
