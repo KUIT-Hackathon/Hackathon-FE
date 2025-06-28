@@ -1,6 +1,11 @@
+import {useState} from "react";
+import Modal from "../../components/Modal";
 import styled from "styled-components";
 import PurpleButton from "../../components/PurpleButton";
 import Header from "../../components/Header";
+import checkIcon from "../../assets/icon/modal/check.svg"; // Assuming you have a check icon for the modal
+
+
 
 
 const Container = styled.div`
@@ -97,6 +102,8 @@ const IDBox = styled.div`
 `;
 
 const SignPage = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <Container>
             <Header title = "회원가입"/>
@@ -110,8 +117,7 @@ const SignPage = () => {
                     <h2>아이디를 입력해주세요.</h2>
                     <h3>아이디는 로그인 시 사용됩니다.</h3>
                     </IDBox>
-                    <input type="text" placeholder="전화번호를 입력하세요." />
-                    <h3>8~20자 영문, 숫자의 조합으로 입력해 주세요.</h3>
+                    <input type="text" placeholder="아이디를 입력하세요." />
                 </InputBox>
                 <PWBox>
                     <InputBox>
@@ -121,7 +127,15 @@ const SignPage = () => {
                     <h3>8~20자 영문, 숫자의 조합으로 입력해 주세요.</h3>
                 </PWBox>
             </InputContainer>
-            <PurpleButton>회원가입하기</PurpleButton>
+            <PurpleButton onClick={()=> setIsModalOpen(true)}>회원가입하기</PurpleButton>
+            <Modal
+                isOpen={isModalOpen}
+                icon={<img src={checkIcon} alt="체크 아이콘" />}
+                title="회원가입 완료"
+                description={`로그인 후 ToYou를\n이용하세요!`}
+                confirmText="확인"
+                onClose={() => setIsModalOpen(false)}
+                />
         </Container>
     );
 };
