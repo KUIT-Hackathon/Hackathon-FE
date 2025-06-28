@@ -5,6 +5,7 @@ import LoginPage from './pages/login/LoginPage';
 import WritePaper from './pages/paper/WritePaper';
 import CreatePublicPaper from './pages/paper/CreatePublicPaper';
 import CreatePrivatePaper from './pages/paper/CreatePrivatePaper';
+import AlarmPage from './pages/alarm/AlarmPage';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const Router = () => {
     {
       path: '/paper/create/private',
       element: <CreatePrivatePaper />,
+    },
+    {
+      path: '/alarm',
+      element: <AlarmPage />,
     },
   ]);
   return <RouterProvider router={router} />;
