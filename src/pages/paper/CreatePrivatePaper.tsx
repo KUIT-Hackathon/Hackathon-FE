@@ -11,7 +11,6 @@ import Modal from '../../components/Modal';
 import check from '../../assets/icon/modal/check.svg';
 import { useNavigate } from 'react-router-dom';
 
-
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -46,25 +45,25 @@ const CreatePrivatePaper = () => {
   setIsValid(isAllValid);
 };
 
-useEffect(() => {
-  handleChange();
-}, [userName]);
+
+  useEffect(() => {
+    handleChange();
+  }, [userName]);
 
   const handleSubmit = () => {
-  const title = titleInputRef.current?.value.trim();
-  const date = dateInputRef.current?.value.trim();
+    const title = titleInputRef.current?.value.trim();
+    const date = dateInputRef.current?.value.trim();
 
-  if (!!title && !!date) {
-    console.log('롤링페이퍼 생성:', { title, date, type });
-    setIsModalOpen(true);
-  }
-};
-
-  const handleModalClose = () => {
-  setIsModalOpen(false);
-  navigate('/public/main'); 
+    if (!!title && !!date) {
+      console.log('롤링페이퍼 생성:', { title, date, type });
+      setIsModalOpen(true);
+    }
   };
 
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    navigate('/public/main');
+  };
 
   return (
     <Wrapper>
