@@ -5,6 +5,11 @@ import LoginPage from './pages/login/LoginPage';
 import WritePaper from './pages/paper/WritePaper';
 import CreatePublicPaper from './pages/paper/CreatePublicPaper';
 import CreatePrivatePaper from './pages/paper/CreatePrivatePaper';
+import AlarmPage from './pages/alarm/AlarmPage';
+import MyPageMain from './pages/myPage/myPageMain';
+import FollowingPage from './pages/myPage/followingPage';
+import FollowerPage from './pages/myPage/followerPage';
+import FindFriendPage from './pages/myPage/findFriendPage';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -31,6 +36,26 @@ const Router = () => {
     {
       path: '/paper/create/private',
       element: <CreatePrivatePaper />,
+    },
+    {
+      path: '/alarm',
+      element: <AlarmPage />,
+    },
+    {
+      path: '/mypage',
+      element: <MyPageMain name={'김도현'} mypaper={'12'} follower={'12'} following={'24'} />,
+    },
+    {
+      path: '/mypage/following',
+      element: <FollowingPage />,
+    },
+    {
+      path: '/mypage/follower',
+      element: <FollowerPage />,
+    },
+    {
+      path: '/mypage/findfriend',
+      element: <FindFriendPage />,
     },
   ]);
   return <RouterProvider router={router} />;

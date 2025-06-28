@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import PurpleButton from '../../components/PurpleButton';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Container = styled.div`
   display: flex;
@@ -98,6 +100,15 @@ const SignButton = styled.button`
 `;
 
 const LoginPage = () => {
+  const [userId, setUserId] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    console.log('login 시도 : ', { userId, password });
+    //list 검사 코드
+  };
+
+  const navigate = useNavigate();
   return (
     <Container>
       <TextContainer>
@@ -108,13 +119,13 @@ const LoginPage = () => {
         <p>아이디와 비밀번호를 입력해주세요.</p>
       </TextContainer>
       <LoginBox>
-        <input type="text" placeholder="아이디 입력" />
-        <input type="password" placeholder="비밀번호 입력" />
+        <input type="text" placeholder="아이디 입력" value={userId} onChange={(e) => setUserId(e.target.value)} />
+        <input type="password" placeholder="비밀번호 입력" value={password} onChange={(e) => setPassword(e.target.value)} />
       </LoginBox>
-      <PurpleButton onClick={() => console.log()}>로그인하기</PurpleButton>
+      <PurpleButton onClick={handleLogin}>로그인하기</PurpleButton>
       <SignBox>
         <h3>계정이 없으신가요 ?</h3>
-        <SignButton>회원가입 하기</SignButton>
+        <SignButton onClick={() => navigate('/signin')}>회원가입 하기</SignButton>
       </SignBox>
     </Container>
   );
