@@ -11,6 +11,7 @@ import FollowingPage from './pages/myPage/followingPage';
 import FollowerPage from './pages/myPage/followerPage';
 import FindFriendPage from './pages/myPage/findFriendPage';
 import OpenedPage from './pages/open/OpenedPage';
+import UnOpenedPage from './pages/open/UnOpenedPage';
 import PublicMain from './pages/publicPaper/publicMain';
 import WritePublic from './pages/publicPaper/writePublic';
 import MessageDetail from './pages/paper/MessageDetail';
@@ -38,6 +39,10 @@ const Router = () => {
     {
       path: '/paper/open',
       element: <OpenedPage />,
+    },
+    {
+      path: '/paper/unopen',
+      element: <UnOpenedPage />,
     },
     {
       path: '/paper/create/public',

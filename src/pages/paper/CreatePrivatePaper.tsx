@@ -35,11 +35,16 @@ const CreatePrivatePaper = () => {
   const titleInputRef = createRef<HTMLInputElement | null>();
   const dateInputRef = createRef<HTMLInputElement | null>();
   const handleChange = () => {
-    const title = titleInputRef.current?.value.trim();
-    const date = dateInputRef.current?.value.trim();
-    const isAllValid = !!title && !!date && userName.length > 0;
-    setIsValid(isAllValid);
-  };
+  const title = titleInputRef.current?.value.trim();
+  const date = dateInputRef.current?.value.trim();
+  const isTitleDateValid = !!title && !!date;
+  const isAllValid = target === 'me'
+    ? isTitleDateValid
+    : isTitleDateValid && userName.length > 0;
+
+  setIsValid(isAllValid);
+};
+
 
   useEffect(() => {
     handleChange();
