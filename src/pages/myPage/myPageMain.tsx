@@ -45,6 +45,7 @@ const Spec = styled.button`
   align-items: center;
   justify-content: center;
   gap: 4px;
+  background: none;
   h3 {
     text-align: center;
     font-size: 12px;
