@@ -5,17 +5,26 @@ import { createRef, useState } from 'react';
 import Modal from '../../components/Modal';
 import airplane from '../../assets/icon/modal/airplane.svg';
 import { Wrapper, Container, InfoContainer, InfoTextContainer, InfoTitle, InfoDesc, InputName, InputContent } from './WritePaper.styles';
+import usePaperApi from '../../hooks/usePaperApi';
 
 const WritePaper = () => {
   const titleInputRef = createRef<HTMLInputElement | null>();
   const contentInputRef = createRef<HTMLTextAreaElement | null>();
   const [isValid, isSetValid] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { postMessage } = usePaperApi();
   const handleSubmit = () => {
     const title = titleInputRef.current?.value.trim();
     const content = contentInputRef.current?.value.trim();
     if (!title || !content) return;
     setIsModalOpen(true);
+    const messageData = {
+      uuid: '1',
+      name: '나',
+      title: title,
+      content: content,
+    };
+    postMessage;
   };
   const handleInput = () => {
     const title = titleInputRef.current?.value.trim();

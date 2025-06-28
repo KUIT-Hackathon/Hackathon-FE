@@ -2,7 +2,7 @@ import { ENDPOINTS } from '../config';
 import useApi from './useApi';
 
 const useAuthApi = () => {
-  const { api, withUserId } = useApi();
+  const { api } = useApi();
 
   const signup = (data) => {
     return api

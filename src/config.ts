@@ -12,6 +12,10 @@ export const ENDPOINTS = {
   },
   PAPER: {
     MY: '/my',
+    PUBLIC: '/public',
+  },
+  BASE: {
+    MESSAGE: '/message',
   },
 } as const;
 

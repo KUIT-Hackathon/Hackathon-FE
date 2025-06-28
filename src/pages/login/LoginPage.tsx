@@ -108,6 +108,7 @@ const LoginPage = () => {
 
   const handleLogin = () => {
     console.log('login 시도 : ', { userId, password });
+
     //list 검사 코드
     const loginData = {
       id: userId,

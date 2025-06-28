@@ -11,13 +11,7 @@ const useApi = () => {
   const paperApi = axios.create({
     baseURL: BASE_URL + '/paper',
   });
-  const withUserId = (headers = {}) => ({
-    headers: {
-      ...headers,
-      'X-USER-ID': localStorage.getItem('userId') || '',
-    },
-  });
-  return { api, userApi, paperApi, withUserId };
+  return { api, userApi, paperApi };
 };
 
 export default useApi;
