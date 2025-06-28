@@ -3,6 +3,8 @@ import Header from '../../components/Header';
 import ToYou from '../../assets/icon/logo/defaultLogo.svg';
 import PaperTitle from '../../components/PaperTitle';
 import BottomBar from '../../components/BottomBar';
+import { useEffect, useState } from 'react';
+import usePaperApi from '../../hooks/usePaperApi';
 
 const Container = styled.div`
   width: 375px;
@@ -33,11 +35,11 @@ const PaperContainer = styled.div`
 `;
 
 const PublicMain = () => {
-  const paper = [
-    { uuid: 'asdf', icon: 'Birthday', title: 'Title1', date: '2025년 12월 12일' },
-    { uuid: 'asdf', icon: 'Birthday', title: 'Title2', date: '2025년 12월 12일' },
-    { uuid: 'asdf', icon: 'Birthday', title: 'Title3', date: '2025년 12월 12일' },
-  ];
+  const { getPublicPaper } = usePaperApi();
+  const [papers, setPaper] = useState([]);
+  useEffect(() => {
+    getPublicPaper().then((data) => setPaper(data));
+  }, []);
 
   return (
     <Container>
@@ -46,9 +48,7 @@ const PublicMain = () => {
         <img src={ToYou} alt="To-You" />
       </LogoImg>
       <PaperContainer>
-        {paper.map((paper) => (
-          <PaperTitle key={paper.uuid} icon={paper.icon} title={paper.title} date={paper.date} />
-        ))}
+        {Array.isArray(papers) && papers.map((paper) => <PaperTitle key={paper.uuid} icon={paper.icon} title={paper.title} date={paper.date} />)}
       </PaperContainer>
       <BottomBar />
     </Container>

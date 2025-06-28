@@ -2,10 +2,10 @@ import useApi from './useApi';
 import { ENDPOINTS } from '../config';
 
 const useUserApi = () => {
-  const { api } = useApi();
+  const { userApi } = useApi();
 
   const getProfile = () => {
-    api
+    return userApi
       .get(ENDPOINTS.USER.PROFILE)
       .then((response) => {
         return response.data;
