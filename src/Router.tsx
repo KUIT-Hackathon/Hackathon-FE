@@ -42,8 +42,8 @@ const Router = () => {
       element: <AlarmPage />,
     },
     {
-      path: '/mypage/main',
-      element: <MyPageMain name={'김도현'} />,
+      path: '/mypage',
+      element: <MyPageMain name={'김도현'} mypaper={'12'} follower={'12'} following={'24'} />,
     },
     {
       path: '/mypage/following',

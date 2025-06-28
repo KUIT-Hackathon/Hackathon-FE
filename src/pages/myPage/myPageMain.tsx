@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Header from '../../components/Header';
 import PaperTitle from '../../components/PaperTitle';
 import BottomBar from '../../components/BottomBar';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   width: 375px;
@@ -39,17 +40,22 @@ const Stat = styled.div`
   gap: 16px;
 `;
 
-const Spec = styled.button`
+const Spec = styled.button<{ disabled?: boolean }>`
+  all: unset;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 4px;
   background: none;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+
   h3 {
     text-align: center;
     font-size: 12px;
     font-weight: 400;
+    color: ${({ disabled }) => (disabled ? '#000' : '#000')};
+    opacity: ${({ disabled }) => (disabled ? 1 : 1)};
   }
 `;
 
@@ -77,24 +83,26 @@ const PaperContainer = styled.div`
   margin-top: 8px;
 `;
 
-const myPageMain = ({ name }) => {
+const MyPageMain = ({ name, mypaper, following, follower }) => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Header title="마이페이지" />
       <MyCard>
         <h1>{name} 님</h1>
         <Stat>
-          <Spec>
+          <Spec disabled={true}>
             <h3>나의 페이퍼</h3>
-            <Count>6</Count>
+            <Count>{mypaper}</Count>
           </Spec>
-          <Spec>
+          <Spec type="button" onClick={() => navigate('/mypage/following')} disabled={false}>
             <h3>팔로잉</h3>
-            <Count>12</Count>
+            <Count>{following}</Count>
           </Spec>
-          <Spec>
+          <Spec type="button" onClick={() => navigate('/mypage/follower')} disabled={false}>
             <h3>팔로워</h3>
-            <Count>24</Count>
+            <Count>{follower}</Count>
           </Spec>
         </Stat>
       </MyCard>
@@ -111,4 +119,4 @@ const myPageMain = ({ name }) => {
   );
 };
 
-export default myPageMain;
+export default MyPageMain;
