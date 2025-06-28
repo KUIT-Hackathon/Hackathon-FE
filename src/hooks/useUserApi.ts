@@ -17,14 +17,6 @@ const useUserApi = () => {
       .catch((error) => console.log(error));
   };
 
-<<<<<<< HEAD
-  const searchUser = () => {
-    return userApi
-      .get(ENDPOINTS.USER.SEARCH)
-      .then((response) => {
-        return response.data;
-      })
-=======
   const searchUser = (query) => {
     return userApi
       .get(ENDPOINTS.USER.SEARCH, {
@@ -36,7 +28,6 @@ const useUserApi = () => {
       .then((response) => {
         return response.data.data;
       })
->>>>>>> 26f8004 (Feat: api 연결)
       .catch((error) => console.log(error));
   };
 
