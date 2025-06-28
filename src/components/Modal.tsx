@@ -17,7 +17,7 @@ export interface ModalProps {
 const modalStyle: ReactModal.Styles = {
   overlay: {
     width: '375px',
-    height: '812px',
+    height: '900px',
     position: 'fixed',
     backgroundColor: 'rgba(0,0,0,0.6)',
     margin: 'auto',
