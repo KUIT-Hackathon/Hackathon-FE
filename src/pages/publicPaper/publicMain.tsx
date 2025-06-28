@@ -48,7 +48,7 @@ const PublicMain = () => {
         <img src={ToYou} alt="To-You" />
       </LogoImg>
       <PaperContainer>
-        {Array.isArray(papers) && papers.map((paper) => <PaperTitle key={paper.uuid} icon={paper.icon} title={paper.title} date={paper.publishDate} />)}
+        {Array.isArray(papers) && papers.map((paper) => <PaperTitle key={paper.uuid} icon={paper.category} title={paper.title} date={paper.publishDate} />)}
       </PaperContainer>
       <BottomBar />
     </Container>
