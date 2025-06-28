@@ -15,6 +15,7 @@ const WritePaper = () => {
     const title = titleInputRef.current?.value.trim();
     const content = contentInputRef.current?.value.trim();
     if (!title || !content) return;
+    setIsModalOpen(true);
   };
   const handleInput = () => {
     const title = titleInputRef.current?.value.trim();
