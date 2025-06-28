@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Modal from '../../components/Modal';
 import checkIcon from '../../assets/icon/modal/check.svg';
 import { useNavigate } from 'react-router-dom';
+import WrittenTitle from '../../components/WrittenTitle';
 
 const Container = styled.div`
   display: flex;
@@ -23,19 +24,9 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 14px;
+  margin-top: 20px;
 `;
 
-const TitleCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 297px;
-  height: 26px;
-  padding: 19px 23px;
-  background-color: #fff;
-  border-radius: 10px;
-  margin-top: 32px;
-`;
 const NameInput = styled.input`
   width: 299px;
   height: 19px;
@@ -85,7 +76,7 @@ const WritePublic = () => {
     <Container>
       <Header title="메세지 작성하기"></Header>
       <MainContainer>
-        <TitleCard>여기 바꿔야돼!!!!!</TitleCard>
+        <WrittenTitle icon="Birthday" title="백상희 생일" date="2025년 10월 29일" />
         <NameInput type="text" placeholder="작성자 이름(최대8자)" value={title} onChange={(e) => setTitle(e.target.value)}></NameInput>
         <TextInput
           placeholder={`보내고 싶은 한마디를 써주세요 !\n최대 300자까지 작성할 수 있답니다 :)`}
