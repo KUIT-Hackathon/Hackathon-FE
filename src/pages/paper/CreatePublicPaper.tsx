@@ -6,6 +6,10 @@ import { createRef, useState } from 'react';
 import { CATEGORY } from '../../constants/EventCategory';
 import PurpleButton from '../../components/PurpleButton';
 import CreatePaperSection from '../../components/paper/CreatePaperSection';
+import { useNavigate } from 'react-router-dom';
+import Modal from '../../components/Modal';
+import check from '../../assets/icon/modal/check.svg';
+
 
 const Wrapper = styled.div`
   width: 100%;
@@ -21,6 +25,8 @@ const Container = styled.div`
 `;
 
 const CreatePublicPaper = () => {
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [type, setType] = useState<string>(CATEGORY.BIRTHDAY);
   const [isValid, setIsValid] = useState<boolean>(false);
   const titleInputRef = createRef<HTMLInputElement | null>();
@@ -32,11 +38,19 @@ const CreatePublicPaper = () => {
     setIsValid(true);
   };
   const handleSubmit = () => {
-    const title = titleInputRef.current?.value.trim();
-    const date = dateInputRef.current?.value.trim();
-    if (!!title && !!date) console.log();
-  };
+  const title = titleInputRef.current?.value.trim();
+  const date = dateInputRef.current?.value.trim();
 
+  if (!!title && !!date) {
+    console.log('롤링페이퍼 생성:', { title, date, type });
+    setIsModalOpen(true);
+  }
+};
+
+  const handleModalClose = () => {
+  setIsModalOpen(false);
+  navigate('/public/main'); 
+  };
   return (
     <Wrapper>
       <Header title="롤링페이퍼 만들기" />
@@ -58,9 +72,18 @@ const CreatePublicPaper = () => {
         <CreatePaperSection title="카테고리를 선택해주세요." desc="이벤트에 맞는 카테고리를 선택해주세요!">
           <Categorys type={type} setType={setType} />
         </CreatePaperSection>
+        
         <PurpleButton onClick={() => handleSubmit()} disabled={!isValid}>
-          롤링페이퍼 만들기
+          생성하기
         </PurpleButton>
+        <Modal
+          isOpen={isModalOpen}
+          icon={<img src={check} alt="체크 아이콘" />}
+          title="생성 완료"
+          description={`롤링페이퍼가\n 발송되었어요 !`}
+          confirmText="확인"
+          onClose={handleModalClose}
+        />
       </Container>
     </Wrapper>
   );
