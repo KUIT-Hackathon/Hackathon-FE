@@ -31,7 +31,7 @@ const Writer = styled.div`
     color: #bebebe;
   }
 `;
-const Text = styled.textarea`
+const Text = styled.div`
   width: 299px;
   height: 351px;
   display: flex;
@@ -42,9 +42,8 @@ const Text = styled.textarea`
   color: #5e5e5e;
   font-size: 16px;
   font-weight: 500;
-  white-space: pre-line;
-  &::placeholder {
-    color: #bebebe;
+  background-color:#ffff;
+
   }
 `;
 
