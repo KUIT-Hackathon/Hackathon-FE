@@ -5,7 +5,6 @@ import colorAlarm from "../assets/icon/colorNotiOn.svg";
 import grayMy from "../assets/icon/grayMy.svg";
 import plus from "../assets/icon/plus.svg";
 
-
 const Container = styled.div`
     position: fixed;
     bottom: 0;
@@ -32,7 +31,6 @@ const Menu = styled.div`
         width: 24px;
         height: 24px;
     }
-
     h1 {
         font-size: 12px;
         color: #454545;
@@ -42,15 +40,12 @@ const Menu = styled.div`
     }
 `;
 
-
 const Plus = styled.div`
-    
     img {
         width: 40px;
         height: 40px;
     }
 `;
-
 
 const BottomBar = () =>{
     return (
@@ -66,7 +61,6 @@ const BottomBar = () =>{
             <Plus>
                 <img src={plus} alt="페이지 추가하기" />
             </Plus>
-
             <Menu>
                 <img src={colorAlarm} alt="소식함" />
                 <h1>소식함</h1>
@@ -75,10 +69,8 @@ const BottomBar = () =>{
                 <img src={grayMy} alt="마이페이지" />
                 <h1>마이페이지</h1>
             </Menu>
-
         </Container>
     );
-}
-
+};
 
 export default BottomBar;

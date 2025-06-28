@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import  PurpleButton  from "../components/PurpleButton";
+import  PurpleButton  from "../../components/PurpleButton";
 
 const Container = styled.div`
     display: flex;
@@ -13,7 +13,7 @@ const Container = styled.div`
     background-color: #fafafa;
 `;
 
-const MainText = styled.div`
+const TextContainer = styled.div`
     width: 310px;
     height: 113px;
     display: flex;
@@ -21,7 +21,6 @@ const MainText = styled.div`
     margin-top:122px;
     margin-bottom: 51px;
     gap: 24px;
-
     p{
         color:#5e5e5e;
         font-family : 'Pretendard';
@@ -30,24 +29,21 @@ const MainText = styled.div`
     }
 `;
 
-const Hello = styled.div`
+const MainText = styled.div`
     display: flex;
     flex-direction: column;
     font-family : 'Pretendard';
     color : #2b2b2b;
-    
     gap:8px;
   h1 {
     font-size: 28px;
     font-weight: 700;
-        margin:0;
-
+    margin:0;
   }
   h2 {
     font-size: 24px;
     font-weight: 600;
-        margin:0;
-
+    margin:0;
   }
 `;
 
@@ -80,7 +76,6 @@ const SignBox = styled.div`
     align-items: center;
     justify-content: center;
     gap: 8px;
-
     h3{
         color: #5e5e5e;
         font-family: 'Pretendard';
@@ -106,25 +101,22 @@ const SignButton = styled.button`
 const LoginPage = () => {
     return (
         <Container>
-            <MainText>
-                <Hello>
+            <TextContainer>
+                <MainText>
                     <h1>안녕하세요 !</h1>
                     <h2>ToYou입니다.</h2>
-                </Hello>
+                </MainText>
                 <p>아이디와 비밀번호를 입력해주세요.</p>
-            </MainText>
+            </TextContainer>
             <LoginBox>
                 <input type="text" placeholder="아이디 입력" />
                 <input type="password" placeholder="비밀번호 입력" />
             </LoginBox>
-
             <PurpleButton>로그인하기</PurpleButton>
-
             <SignBox>
                 <h3>계정이 없으신가요 ?</h3>
                 <SignButton>회원가입 하기</SignButton>
             </SignBox>
-
         </Container>
     );
 }
