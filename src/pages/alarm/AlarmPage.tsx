@@ -43,21 +43,21 @@ const AlarmPage = () => {
       <DateWrapper>
         <h3>2025.06.23.</h3>
         <MsgContainer>
-          <NotiPaper friend="태성" />
+          <NotiPaper  />
           <NotiFriend friend="태성" />
         </MsgContainer>
       </DateWrapper>
       <DateWrapper>
         <h3>2025.06.22.</h3>
         <MsgContainer>
-          <NotiPaper friend="태성" />
+          <NotiPaper />
           <NotiFriend friend="태성" />
         </MsgContainer>
       </DateWrapper>
       <DateWrapper>
         <h3>2025.06.21.</h3>
         <MsgContainer>
-          <NotiPaper friend="태성" />
+          <NotiPaper  />
           <NotiFriend friend="태성" />
         </MsgContainer>
       </DateWrapper>
