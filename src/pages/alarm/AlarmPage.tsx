@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import NotiPaper from '../../components/alarm/NotiPaper';
-import NotiFriend from '../../components/alarm/NotiFriend';
 import Header from '../../components/Header';
 import BottomBar from '../../components/BottomBar';
+import useAlarm from '../../hooks/useAlarm';
+import { useEffect, useState } from 'react';
+import letterIcon from '../../assets/icon/alarm/letterIcon.svg';
+import friendIcon from '../../assets/icon/alarm/friendIcon.svg';
 
 const Container = styled.div`
   width: 375px;
@@ -38,30 +41,33 @@ const DateWrapper = styled.div`
 `;
 
 const AlarmPage = () => {
+  const [notification, setNotification] = useState([]);
+  const { getAlarm } = useAlarm();
+  useEffect(() => {
+    getAlarm().then((result) => setNotification(result ?? []));
+  }, []);
+  const selectType = (type) => {
+    if (type == 'FOLLOW') {
+      return <NotiPaper icon={friendIcon} content="태성(ts1111)님이 나를 팔로우 했어요!" />;
+    } else if (type == 'CREATE') {
+      return <NotiPaper icon={letterIcon} content="상희님의 롤링페이퍼가 생겼어요!" />;
+    } else if (type == 'OPEN') {
+      return <NotiPaper icon={letterIcon} content="나의 롤링페이퍼가 오늘 열렸어요!" />;
+    }
+  };
   return (
     <Container>
       <Header title="소식함" />
-      <DateWrapper>
-        <h3>2025.06.23.</h3>
-        <MsgContainer>
-          <NotiPaper />
-          <NotiFriend friend="태성" />
-        </MsgContainer>
-      </DateWrapper>
-      <DateWrapper>
-        <h3>2025.06.22.</h3>
-        <MsgContainer>
-          <NotiPaper />
-          <NotiFriend friend="태성" />
-        </MsgContainer>
-      </DateWrapper>
-      <DateWrapper>
-        <h3>2025.06.21.</h3>
-        <MsgContainer>
-          <NotiPaper />
-          <NotiFriend friend="태성" />
-        </MsgContainer>
-      </DateWrapper>
+      {notification.map((noti) => {
+        const date = new Date(noti.createdAt);
+        const formattedDate = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}.`;
+        return (
+          <DateWrapper key={noti.id}>
+            <h3>{formattedDate}</h3>
+            <MsgContainer>{selectType(noti.type)}</MsgContainer>
+          </DateWrapper>
+        );
+      })}
       <BottomBar />
     </Container>
   );
