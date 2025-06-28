@@ -5,6 +5,7 @@ import PaperTitle from '../../components/PaperTitle';
 import BottomBar from '../../components/BottomBar';
 import { useEffect, useState } from 'react';
 import usePaperApi from '../../hooks/usePaperApi';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   width: 375px;
@@ -35,11 +36,17 @@ const PaperContainer = styled.div`
 `;
 
 const PublicMain = () => {
+  const navigate = useNavigate();
   const { getPublicPaper } = usePaperApi();
   const [papers, setPaper] = useState([]);
+
   useEffect(() => {
     getPublicPaper().then((data) => setPaper(data.paperEntityList));
   }, []);
+
+  const handleCardClick = (uuid) => {
+    navigate('/paper/list');
+  };
 
   return (
     <Container>
@@ -48,7 +55,12 @@ const PublicMain = () => {
         <img src={ToYou} alt="To-You" />
       </LogoImg>
       <PaperContainer>
-        {Array.isArray(papers) && papers.map((paper) => <PaperTitle key={paper.uuid} icon={paper.category} title={paper.title} date={paper.publishDate} />)}
+        {Array.isArray(papers) &&
+          papers.map((paper) => (
+            <div key={paper.uuid} onClick={() => handleCardClick(paper.uuid)} style={{ cursor: 'pointer' }}>
+              <PaperTitle icon={paper.category} title={paper.title} date={paper.publishDate} />
+            </div>
+          ))}
       </PaperContainer>
       <BottomBar />
     </Container>
