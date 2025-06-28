@@ -96,7 +96,6 @@ const ConfirmButton = styled.button`
   justify-content: center;
   width: 256px;
   height: 44px;
-  padding: 11px 112px;
   border-radius: 12px;
   border: none;
   line-height: normal;
