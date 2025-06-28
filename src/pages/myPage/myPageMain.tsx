@@ -5,6 +5,7 @@ import BottomBar from '../../components/BottomBar';
 import { useNavigate } from 'react-router-dom';
 import  useUserApi  from '../../hooks/useUserApi'
 import {useState, useEffect} from 'react';
+import usePaperApi from '../../hooks/usePaperApi';
 
 const Container = styled.div`
   width: 375px;
@@ -87,31 +88,44 @@ const PaperContainer = styled.div`
 
 const MyPageMain = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    name:'',
+    paperCount:0,
+    followingCount:0,
+    followerCount:0,
+  });
   const { myPage } = useUserApi();
   useEffect(()=>{
     myPage().then((result)=>{
-      setData(result);
+      setData(result.data);
     })
   },[]);
+
+  const { getMyPaper } = usePaperApi();
+  const [papers, setPaper] = useState([]);
+  useEffect(() => {
+    getMyPaper().then((d) => setPaper(d.paperEntityList));
+  }, []);
+
   
   return (
     <Container>
       <Header title="마이페이지" />
       <MyCard>
-        <h1>{data[0]} 님</h1>
+        <h1>{data.name} 님</h1>
         <Stat>
+          
           <Spec disabled={true}>
             <h3>나의 페이퍼</h3>
-            <Count>{data[1]}</Count>
+            <Count>{data.paperCount}</Count>
           </Spec>
           <Spec type="button" onClick={() => navigate('/mypage/following')} disabled={false}>
             <h3>팔로잉</h3>
-            <Count>{data[2]}</Count>
+            <Count>{data.followingCount}</Count>
           </Spec>
           <Spec type="button" onClick={() => navigate('/mypage/follower')} disabled={false}>
             <h3>팔로워</h3>
-            <Count>{data[3]}</Count>
+            <Count>{data.followerCount}</Count>
           </Spec>
         </Stat>
       </MyCard>
@@ -119,8 +133,7 @@ const MyPageMain = () => {
       <MyPaper>
         <PaperT>나의 페이퍼</PaperT>
         <PaperContainer>
-          <PaperTitle icon="Birthday" title="김도현의 생일" date="2025년 09월 11일" />
-          <PaperTitle icon="Graduate" title="상희야 졸업 축하해!" date="2999년 02월 28일" />
+        {Array.isArray(papers) && papers.map((paper) => <PaperTitle key={paper.uuid} icon={paper.category} title={paper.title} date={paper.publishDate} />)}
         </PaperContainer>
       </MyPaper>
       <BottomBar />

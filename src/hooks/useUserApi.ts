@@ -13,32 +13,36 @@ const useUserApi = () => {
       .catch((error) => console.log(error));
   };
 
-  const searchUser = () =>{
+  const searchUser = () => {
     return userApi
       .get(ENDPOINTS.USER.SEARCH)
-      .then((response)=>{
+      .then((response) => {
         return response.data;
       })
-      .catch((error)=> console.log(error));
+      .catch((error) => console.log(error));
   };
 
-  const myPage = () =>{
+  const myPage = () => {
     return userApi
-      .get(ENDPOINTS.USER.PROFILE)
-      .then((response)=>{
+      .get(ENDPOINTS.USER.PROFILE, {
+        headers: {
+          userId: parseInt(localStorage.getItem('userId') || '0', 10),
+        },
+      })
+      .then((response) => {
         return response.data;
       })
-      .catch((error)=>console.log(error));
-  }
+      .catch((error) => console.log(error));
+  };
 
-  const followerCheck = ()=>{
-    return userApi 
-    .get(ENDPOINTS.USER.FOLLOWER)
-    .then((response)=>{
+  const followerCheck = () => {
+    return userApi
+      .get(ENDPOINTS.USER.FOLLOWER)
+      .then((response) => {
         return response.data;
-    })
-    .catch((error)=>console.log(error));
-  }
+      })
+      .catch((error) => console.log(error));
+  };
 
   return { getProfile, searchUser, myPage, followerCheck };
 };

@@ -38,7 +38,7 @@ const PublicMain = () => {
   const { getPublicPaper } = usePaperApi();
   const [papers, setPaper] = useState([]);
   useEffect(() => {
-    getPublicPaper().then((data) => setPaper(data));
+    getPublicPaper().then((data) => setPaper(data.paperEntityList));
   }, []);
 
   return (
@@ -48,7 +48,7 @@ const PublicMain = () => {
         <img src={ToYou} alt="To-You" />
       </LogoImg>
       <PaperContainer>
-        {Array.isArray(papers) && papers.map((paper) => <PaperTitle key={paper.uuid} icon={paper.icon} title={paper.title} date={paper.date} />)}
+        {Array.isArray(papers) && papers.map((paper) => <PaperTitle key={paper.uuid} icon={paper.category} title={paper.title} date={paper.publishDate} />)}
       </PaperContainer>
       <BottomBar />
     </Container>
