@@ -13,6 +13,9 @@ import FindFriendPage from './pages/myPage/findFriendPage';
 import OpenedPage from './pages/open/OpenedPage';
 import PublicMain from './pages/publicPaper/publicMain';
 import WritePublic from './pages/publicPaper/writePublic';
+import MessageDetail from './pages/paper/MessageDetail';
+import PaperList from './pages/paper/PaperList';
+
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -47,6 +50,14 @@ const Router = () => {
     {
       path: '/alarm',
       element: <AlarmPage />,
+    },
+    {
+      path: '/paper/list',
+      element: <PaperList />,
+    },
+    {
+      path: '/paper/detail',
+      element: <MessageDetail />,
     },
     {
       path: '/mypage',
