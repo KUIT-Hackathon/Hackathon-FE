@@ -23,7 +23,7 @@ const InputContainer = styled.div`
     width: 335px;
     gap: 28px;
     margin-top: 78px;
-    margin-bottom: 169px;
+    margin-bottom: 167px;
 `;
 
 const InputBox = styled.div`
@@ -38,6 +38,14 @@ const InputBox = styled.div`
         font-family : 'Pretendard';
         font-size: 22px;
         font-weight: 500;
+    }
+    h3{
+        margin:0;
+        font-family: 'Pretendard';
+        font-size: 12px;
+        font-weight: 400;
+        color: #8e8e8e;
+        line-height: 140%;
     }
     input {
         display: flex;
@@ -74,7 +82,7 @@ const PWBox = styled.div`
     }
 `;
 
-const NumberBox = styled.div`
+const IDBox = styled.div`
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -97,6 +105,14 @@ const SignPage = () => {
                     <h2>이름을 입력해주세요.</h2>
                     <input type="text" placeholder="이름을 입력하세요." />
                 </InputBox>
+                <InputBox>
+                    <IDBox>
+                    <h2>아이디를 입력해주세요.</h2>
+                    <h3>아이디는 로그인 시 사용됩니다.</h3>
+                    </IDBox>
+                    <input type="text" placeholder="전화번호를 입력하세요." />
+                    <h3>8~20자 영문, 숫자의 조합으로 입력해 주세요.</h3>
+                </InputBox>
                 <PWBox>
                     <InputBox>
                         <h2>비밀번호를 입력해주세요.</h2>
@@ -104,13 +120,6 @@ const SignPage = () => {
                     </InputBox>
                     <h3>8~20자 영문, 숫자의 조합으로 입력해 주세요.</h3>
                 </PWBox>
-                <InputBox>
-                    <NumberBox>
-                    <h2>전화번호를 입력해주세요.</h2>
-                    <h3>전화번호는 로그인 시 사용됩니다.</h3>
-                    </NumberBox>
-                    <input type="text" placeholder="전화번호를 입력하세요." />
-                </InputBox>
             </InputContainer>
             <PurpleButton>회원가입하기</PurpleButton>
         </Container>
