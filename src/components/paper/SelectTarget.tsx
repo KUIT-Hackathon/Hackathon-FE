@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 import human from '../../assets/icon/paper/human.svg';
+import useUserApi from '../../hooks/useUserApi';
 
 interface User {
-  id: string;
+  id: number;
   name: string;
+  loginId: string;
 }
 
 interface SelectTargetProps {
-  dummyData: User[];
   target: string;
   setTarget: React.Dispatch<React.SetStateAction<string>>;
   searchUserId: string;
@@ -70,11 +71,16 @@ const SearchItemName = styled.span`
   font-weight: 500;
 `;
 
-const SelectTarget = ({ dummyData, target, setTarget, searchUserId, setSearchUserId, userName, setUserName }: SelectTargetProps) => {
-  const filterNames = dummyData.filter((user) => user.id.includes(searchUserId)).map((user) => user.name);
+const SelectTarget = ({ target, setTarget, searchUserId, setSearchUserId, userName, setUserName }: SelectTargetProps) => {
+  const [follower, setFollower] = useState<User[]>([]);
+  const { searchFollower } = useUserApi();
+  const filterNames = follower.filter((user) => user.loginId.includes(searchUserId)).map((user) => user.name);
   const isValidDisplay = () => {
     if (searchUserId != '' && filterNames.length > 0 && userName.length == 0) return true;
   };
+  useEffect(() => {
+    searchFollower().then((result) => setFollower(result ?? []));
+  }, []);
   return (
     <Wrapper>
       <TargetButtonContainer>

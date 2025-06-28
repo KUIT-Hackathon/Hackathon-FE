@@ -1,13 +1,17 @@
 import styled from 'styled-components';
-import Birthday from '../assets/icon/paper/birthday.svg';
-import Graduate from '../assets/icon/paper/graduate.svg';
-import Running from '../assets/icon/paper/running.svg';
+import BIRTHDAY from '../assets/icon/paper/birthday.svg';
+import GRADUATION from '../assets/icon/paper/graduate.svg';
+import RESIGNATION from '../assets/icon/paper/running.svg';
 import rightArrow from '../assets/icon/rightArrow.svg';
+import EMPLOYMENT from '../assets/icon/paper/employ.svg';
+import PROMOTION from '../assets/icon/paper/money.svg';
 
 const ICON_MAP = {
-  Birthday,
-  Graduate,
-  Running,
+  BIRTHDAY,
+  PROMOTION,
+  GRADUATION,
+  EMPLOYMENT,
+  RESIGNATION,
 };
 
 const Container = styled.button`
@@ -50,7 +54,7 @@ const TextContainer = styled.div`
 `;
 
 const PaperTitle = ({ icon, title, date }) => {
-  const iconSrc = ICON_MAP[icon] || ICON_MAP.Birthday;
+  const iconSrc = ICON_MAP[icon] || ICON_MAP.BIRTHDAY;
 
   return (
     <Container onClick={() => console.log('click!')}>

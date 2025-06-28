@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Header from '../../components/Header';
 import CreatePaperInput from '../../components/paper/CreatePaperInput';
 import Categorys from '../../components/paper/Categorys';
-import { createRef, useState } from 'react';
+import { createRef, useEffect, useState } from 'react';
 import { CATEGORY } from '../../constants/EventCategory';
 import PurpleButton from '../../components/PurpleButton';
 import SelectTarget from '../../components/paper/SelectTarget';
@@ -12,6 +12,7 @@ import Modal from '../../components/Modal';
 import check from '../../assets/icon/modal/check.svg';
 import { useNavigate } from 'react-router-dom';
 
+import useUserApi from '../../hooks/useUserApi';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -86,7 +87,6 @@ useEffect(() => {
         </CreatePaperSection>
         <CreatePaperSection title="받는 사람을 선택해주세요." desc="친구 선택 시, 받는 사람을 꼭 지정해주세요!">
           <SelectTarget
-            dummyData={dummyData}
             target={target}
             setTarget={setTarget}
             searchUserId={searchUserId}
@@ -112,18 +112,3 @@ useEffect(() => {
 };
 
 export default CreatePrivatePaper;
-
-const dummyData = [
-  {
-    id: 'leesooa0316',
-    name: '이수아',
-  },
-  {
-    id: '1234',
-    name: '김도현',
-  },
-  {
-    id: '0316',
-    name: '백상희',
-  },
-];
