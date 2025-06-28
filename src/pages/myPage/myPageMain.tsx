@@ -28,7 +28,7 @@ const MyCard = styled.div`
   border-radius: 10px;
   margin-top: 12px;
   margin-bottom: 29px;
-  background-color: #d7c6ff;
+  background-color: #fff;
   border: 2px solid #c2a8ff;
   h1 {
     font-size: 20px;

@@ -85,7 +85,7 @@ const OpenedPage = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    navigate('/paper/list'); // ✅ 수정된 부분
+    navigate('/paper/list');
   };
 
   const isValid = true;
@@ -96,7 +96,7 @@ const OpenedPage = () => {
       <Container>
         <TextContainer>
           <MainText>
-            <h1>제목</h1>
+            <h1>KUmmIT 해커톤 발표 응원하기</h1>
             <h2>롤링페이퍼가 열렸어요!</h2>
           </MainText>
           <p>24개의 메세지를 읽어보세요</p>
