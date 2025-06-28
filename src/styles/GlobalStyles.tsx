@@ -1,6 +1,12 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
+import { fonts } from './Fonts';
 
 export const GlobalStyles = createGlobalStyle`
+${fonts}
+* {
+  font-family: 'Pretendard', sans-serif;
+  
+}
   p {
     margin: 0;
   }
@@ -9,8 +15,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     }
   #root {
-    // to-do: 디자인 나오면 바꾸기
-    max-width:800px;
+    max-width:375px;
     margin: 0 auto;
     padding: 0;
   } 
