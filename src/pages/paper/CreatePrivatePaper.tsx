@@ -7,12 +7,10 @@ import { CATEGORY } from '../../constants/EventCategory';
 import PurpleButton from '../../components/PurpleButton';
 import SelectTarget from '../../components/paper/SelectTarget';
 import CreatePaperSection from '../../components/paper/CreatePaperSection';
-import { useEffect } from 'react';
 import Modal from '../../components/Modal';
 import check from '../../assets/icon/modal/check.svg';
 import { useNavigate } from 'react-router-dom';
 
-import useUserApi from '../../hooks/useUserApi';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -40,7 +38,11 @@ const CreatePrivatePaper = () => {
   const handleChange = () => {
   const title = titleInputRef.current?.value.trim();
   const date = dateInputRef.current?.value.trim();
-  const isAllValid = !!title && !!date && userName.length > 0;
+  const isTitleDateValid = !!title && !!date;
+  const isAllValid = target === 'me'
+    ? isTitleDateValid
+    : isTitleDateValid && userName.length > 0;
+
   setIsValid(isAllValid);
 };
 
