@@ -30,18 +30,6 @@ const AlarmContainer = styled.div`
     font-weight: 600;
     padding: 4px 10px;
   }
-  button {
-    width: 56px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #9c78ef;
-    border-radius: 12px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-  }
 `;
 
 const NotiPaper = () => {
@@ -49,7 +37,6 @@ const NotiPaper = () => {
     <AlarmContainer>
       <img src={letterIcon} alt="팔로우 알림" />
       <p>상희님의 롤링페이퍼가 생겼어요!</p>
-      <button>보기</button>
     </AlarmContainer>
   );
 };
