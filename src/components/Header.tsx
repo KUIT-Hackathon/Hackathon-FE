@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import arrowBack from '../assets/icon/header/arrowBack.svg';
-import whitePlus from '../assets/icon/header/whitePlus.svg';
 
 interface HeaderProps {
   title: string;
@@ -9,38 +8,49 @@ interface HeaderProps {
 
 const Wrapper = styled.div`
   height: 51px;
+  width: 100%;
+`;
+
+const EmptySpace = styled.div`
+  height: 51px;
 `;
 
 const Container = styled.div`
   position: fixed;
   top: 0;
-  width: 100%;
   height: 51px;
-  padding: 12px 20px;
   display: flex;
+  padding: 12px 20px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   box-sizing: border-box;
   background-color: #fff;
-  h1 {
-    width: 143px;
-    color: #000;
-    text-align: center;
-    font-family: 'Pretendard';
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 150%;
-  }
+  min-width: 375px;
+`;
+
+const ArrowIcon = styled.img`
+  position: absolute;
+  left: 20px;
+`;
+
+const Title = styled.span`
+  width: 143px;
+  color: #000;
+  text-align: center;
+  font-family: 'Pretendard';
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 150%;
 `;
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
     <Wrapper>
       <Container>
-        <img src={arrowBack} alt="뒤로가기" />
-        <h1>{title}</h1>
-        <img src={whitePlus} alt="빈칸" />
+        <ArrowIcon src={arrowBack} alt="뒤로가기" />
+        <Title>{title}</Title>
       </Container>
+      <EmptySpace></EmptySpace>
     </Wrapper>
   );
 };
