@@ -9,6 +9,8 @@ export const ENDPOINTS = {
     SEARCH: '/search',
     PROFILE: '/profile',
     FOLLOWER: '/follower',
+    FOLLOW: '/follow',
+    FOLLOWING: '/following',
   },
   PAPER: {
     MY: '/my',
@@ -16,6 +18,7 @@ export const ENDPOINTS = {
   },
   BASE: {
     MESSAGE: '/message',
+    ALARM: '/notification',
   },
 } as const;
 
