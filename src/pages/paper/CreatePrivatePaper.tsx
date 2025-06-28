@@ -7,12 +7,9 @@ import { CATEGORY } from '../../constants/EventCategory';
 import PurpleButton from '../../components/PurpleButton';
 import SelectTarget from '../../components/paper/SelectTarget';
 import CreatePaperSection from '../../components/paper/CreatePaperSection';
-import { useEffect } from 'react';
 import Modal from '../../components/Modal';
 import check from '../../assets/icon/modal/check.svg';
 import { useNavigate } from 'react-router-dom';
-
-import useUserApi from '../../hooks/useUserApi';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -38,31 +35,30 @@ const CreatePrivatePaper = () => {
   const titleInputRef = createRef<HTMLInputElement | null>();
   const dateInputRef = createRef<HTMLInputElement | null>();
   const handleChange = () => {
-  const title = titleInputRef.current?.value.trim();
-  const date = dateInputRef.current?.value.trim();
-  const isAllValid = !!title && !!date && userName.length > 0;
-  setIsValid(isAllValid);
-};
-
-useEffect(() => {
-  handleChange();
-}, [userName]);
-
-  const handleSubmit = () => {
-  const title = titleInputRef.current?.value.trim();
-  const date = dateInputRef.current?.value.trim();
-
-  if (!!title && !!date) {
-    console.log('롤링페이퍼 생성:', { title, date, type });
-    setIsModalOpen(true);
-  }
-};
-
-  const handleModalClose = () => {
-  setIsModalOpen(false);
-  navigate('/public/main'); 
+    const title = titleInputRef.current?.value.trim();
+    const date = dateInputRef.current?.value.trim();
+    const isAllValid = !!title && !!date && userName.length > 0;
+    setIsValid(isAllValid);
   };
 
+  useEffect(() => {
+    handleChange();
+  }, [userName]);
+
+  const handleSubmit = () => {
+    const title = titleInputRef.current?.value.trim();
+    const date = dateInputRef.current?.value.trim();
+
+    if (!!title && !!date) {
+      console.log('롤링페이퍼 생성:', { title, date, type });
+      setIsModalOpen(true);
+    }
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    navigate('/public/main');
+  };
 
   return (
     <Wrapper>
